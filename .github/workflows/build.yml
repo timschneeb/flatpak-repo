@@ -51,7 +51,6 @@ jobs:
         uses: andyholmes/flatter@main
         with:
           files: |
-            me.timschneeberger.jdsp4linux.pipewire.yaml
             me.timschneeberger.jdsp4linux.pulse.yaml
           arch: ${{ matrix.arch }}
           gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
