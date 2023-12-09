@@ -1,6 +1,6 @@
 app-id: me.timschneeberger.jdsp4linux.pulse
 runtime: org.kde.Platform
-runtime-version: '5.15-22.08'
+runtime-version: '6.6'
 sdk: org.kde.Sdk
 command: jamesdsp
 finish-args:
@@ -12,11 +12,11 @@ finish-args:
   - --device=dri
   - --own-name=me.timschneeberger.jdsp4linux
 cleanup:
-  - "*.a"
-  - "*.la"
-  - "*.h"
-  - "*.m4"
-  - "*.pm"
+  - '*.a'
+  - '*.la'
+  - '*.h'
+  - '*.m4'
+  - '*.pm'
   - /include
   - /lib/pkgconfig
   - /share/pkgconfig
@@ -27,14 +27,14 @@ modules:
       - jamesdsp-common.yaml
     config-opts:
       - CONFIG+=force_debug_info
-      - CONFIG+=USE_PORTALS
+      - CONFIG+=FLATPAK
       - CONFIG+=USE_PULSEAUDIO
       - CONFIG+=NO_CRASH_HANDLER
     sources:
       - type: git
         url: https://github.com/Audio4Linux/JDSP4Linux
-        tag: "2.6.1"
-        commit: e8c5f0af4c3b60cb70d5f92628d4de46a4ca2128
+        tag: 2.7.0
+        commit: c8c9d0e8c2b34388da50557906e5a5e27875acd4
         x-checker-data:
             type: json
             url: https://api.github.com/repos/Audio4Linux/JDSP4Linux/tags

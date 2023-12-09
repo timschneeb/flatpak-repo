@@ -4,7 +4,7 @@ modules:
     config-opts:
       - --disable-documentation
     cleanup:
-      - "*"
+      - '*'
     sources:
       - type: archive
         url: https://download.gnome.org/sources/mm-common/1.0/mm-common-1.0.5.tar.xz
@@ -31,23 +31,25 @@ modules:
       - type: archive
         url: https://ftp.gnome.org/pub/GNOME/sources/glibmm/2.66/glibmm-2.66.6.tar.xz
         sha256: 5358742598181e5351d7bf8da072bf93e6dd5f178d27640d4e462bc8f14e152f
-  - name: portal-qt5
+  - name: portal-qt6
+    buildsystem: meson
     config-opts:
       - -Dvapi=false
       - -Ddocs=false
-      - -Dbackends=qt5
+      - -Dbackend-qt5=disabled
+      - -Dbackend-qt6=enabled
     cleanup:
       - /lib/girepository-1.0
       - /share/gir-1.0
-    buildsystem: meson
     sources:
       - type: git
         url: https://github.com/flatpak/libportal.git
-        tag: "0.6"
-        commit: 13df0b887a7eb7b0f9b14069561a41f62e813155
+        # We need the qt6 backend which is not yet included in a stable release
+        # tag: 0.7.1
+        commit: f7f3acf541087b30a200c5b738162e962fed4d4b
         x-checker-data:
             type: json
             url: https://api.github.com/repos/flatpak/libportal/releases/latest
             tag-query: .tag_name
-            version-query: "$tag | sub(\"^jq-\"; \"\")"
+            version-query: $tag | sub("^jq-"; "")
             timestamp-query: .published_at
