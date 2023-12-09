@@ -50,7 +50,7 @@ jobs:
       - name: Install runtimes
         run: |
           flatpak install --noninteractive org.kde.Sdk/x86_64/6.6
-          flatpak install --noninteractive org.kde.Runtime/x86_64/6.6
+          flatpak install --noninteractive org.kde.Platform/x86_64/6.6
 
 
       - name: Build
