@@ -47,11 +47,17 @@ jobs:
         run: |
           echo "flatpak.timschneeberger.me" > CNAME
 
-      - name: Install runtimes
+      - name: Install runtimes (aarch64)
+        if: ${{ matrix.arch == 'aarch64' }}
+        run: |
+          flatpak install --noninteractive org.kde.Sdk/aarch64/6.6
+          flatpak install --noninteractive org.kde.Platform/aarch64/6.6
+
+      - name: Install runtimes (x86_64)
+        if: ${{ matrix.arch == 'x86_64' }}
         run: |
           flatpak install --noninteractive org.kde.Sdk/x86_64/6.6
           flatpak install --noninteractive org.kde.Platform/x86_64/6.6
-
 
       - name: Build
         uses: andyholmes/flatter@main
